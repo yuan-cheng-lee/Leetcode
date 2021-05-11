@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        unordered_map<char,int> symbol={{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
+        
+        int sum=0,i=0;
+        while(i<s.length())
+        {
+            if (symbol[s[i+1]]>symbol[s[i]])
+            {
+                sum = sum+symbol[s[i+1]]-symbol[s[i]];
+                i=i+2;
+            }
+            else{
+                sum += symbol[s[i]];
+                i++;
+            }
+        }
+        return sum;
+    }
+};
